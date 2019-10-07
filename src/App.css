@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* width: 800upx; */
+}
