@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Modal, Button }from 'antd';
+import { Modal, Button } from 'antd';
 import PmContext from './Context'
 import Pmlist from './Pmlist'
 import './Pmboard.css'
@@ -21,32 +21,27 @@ function Pmboard(props) {
         props.onAddList(pmList);
     }
 
-    function handleOk(){
-       setModalText('The modal will be closed after two seconds');
-       setConfirmLoading(true);
-       setTimeout(()=>{
-          setVisible(false);
-          setConfirmLoading(true);
-       },
-       2000);
+    function handleOk() {
+        setModalText('The modal will be closed after two seconds');
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setVisible(false);
+            setConfirmLoading(false);
+        }, 2000);
     }
 
-    function handleCancel(){
+    function handleCancel() {
         setVisible(false);
-    }
-
-    function showModal(){
-        setVisible(true);
     }
 
     return (
         <div>
             <div>
-              <Button type="primary" onClick={showModal}>Open Modal with async logic</Button>
-              <Modal title="测试" visible={visible} confirmLoading={confirmLoading} onOk={handleOk} onCancel={handleCancel}><p>{modalText}</p></Modal>
+                <Button type="primary" onClick={()=> setVisible(true)}>Open Modal with async logic</Button>
+                <Modal title="测试" visible={visible} confirmLoading={confirmLoading} onOk={handleOk} onCancel={handleCancel}><p>{modalText}</p></Modal>
             </div>
             <div className="list" style={{ background: props.color }}>
-                <div style={{color: "white"}}>{props.title}{testContext}</div>
+                <div style={{ color: "white" }}>{props.title}{testContext}</div>
                 {listItems}
             </div>
             <div onClick={AddList}>+新增</div>
