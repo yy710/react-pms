@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button } from 'antd';
-import PmContext from './Context'
-import Pmlist from './Pmlist'
-import './Pmboard.css'
+import PmContext from './Context';
+import Pmlist from './Pmlist';
+import './Pmboard.css';
+import 'antd/dist/antd.css';
 
 function Pmboard(props) {
     let { testContext } = useContext(PmContext);
