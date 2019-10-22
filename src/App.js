@@ -4,7 +4,7 @@ import Pmboard from './components/Pmboard'
 import PmContext from './components/Context'
 //import logo from './logo.svg';
 import './App.css';
-import PicturesWall from './components/Test.jsx';
+import Upload2 from './components/Test.jsx';
 
 let arr_pmList = [
   [
@@ -54,7 +54,7 @@ function App() {
           </div>
         </Route>
         <Route path="/2">
-          <PicturesWall></PicturesWall>
+          <Upload2></Upload2>
         </Route>
       </Switch>
     </Router>
