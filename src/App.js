@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import Pmboard from './components/Pmboard'
 import PmContext from './components/Context'
 //import logo from './logo.svg';
 import './App.css';
+import PicturesWall from './components/Test.jsx';
 
 let arr_pmList = [
   [
@@ -24,7 +26,7 @@ let arr_pmList = [
 ];
 
 function App() {
-  let [ count, setCount ] = useState(100);
+  let [count, setCount] = useState(100);
 
   function addList(n, r) {
     //console.log("click e: ", e.target.id);
@@ -38,15 +40,24 @@ function App() {
   }
 
   return (
-    <div className="board">
-      <PmContext.Provider value={{ testContext: count }}>
-        {/* <TestContest></TestContest> */}
-        <Pmboard key="collections" color="orange" title="客户需求记录" onAddList={r => addList(1, r)} pmList={arr_pmList[0]}></Pmboard>
-        <Pmboard key="tasks" color="grey" title="已分配任务" onAddList={r => addList(2, r)} pmList={arr_pmList[1]}></Pmboard>
-        <Pmboard key="finished" color="green" title="已完成任务" onAddList={r => addList(3, r)} pmList={arr_pmList[2]}></Pmboard>
-      </PmContext.Provider>
-      {/* <button onClick={() => setCount(++count)}>click me!</button> */}
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/1">
+          <div className="board">
+            <PmContext.Provider value={{ testContext: count }}>
+              {/* <TestContest></TestContest> */}
+              <Pmboard key="collections" color="orange" title="客户需求记录" onAddList={r => addList(1, r)} pmList={arr_pmList[0]}></Pmboard>
+              <Pmboard key="tasks" color="grey" title="已分配任务" onAddList={r => addList(2, r)} pmList={arr_pmList[1]}></Pmboard>
+              <Pmboard key="finished" color="green" title="已完成任务" onAddList={r => addList(3, r)} pmList={arr_pmList[2]}></Pmboard>
+            </PmContext.Provider>
+            {/* <button onClick={() => setCount(++count)}>click me!</button> */}
+          </div>
+        </Route>
+        <Route path="/2">
+          <PicturesWall></PicturesWall>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

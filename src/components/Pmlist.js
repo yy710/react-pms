@@ -1,6 +1,6 @@
 import './Pmlist.css';
 import React, { useEffect, useState } from 'react';
-import { Card, Icon, Avatar } from 'antd';
+import { Card, Icon, Avatar, Modal, Button } from 'antd';
 const { Meta } = Card;
 
 function Pmlist(props) {
