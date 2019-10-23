@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button } from 'antd';
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import PmContext from './Context';
 import Pmlist from './Pmlist';
 import './Pmboard.css';
