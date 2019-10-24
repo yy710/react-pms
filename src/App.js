@@ -5,6 +5,7 @@ import PmContext from './components/Context'
 //import logo from './logo.svg';
 import './App.css';
 import Upload2 from './components/Test.jsx';
+import QuoteApp from './components/dnd.jsx';
 
 let arr_pmList = [
   [
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path="/2">
           <Upload2></Upload2>
+        </Route>
+        <Route path="/3">
+          <QuoteApp></QuoteApp>
         </Route>
       </Switch>
     </Router>
