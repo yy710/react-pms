@@ -2,18 +2,15 @@ import React, { useState } from "react";
 // import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import type { Quote as QuoteType } from "../types";
+// import type { Quote as QuoteType } from "../types";
 
 const initial = Array.from({ length: 10 }, (v, k) => k).map(k => {
-  const custom: Quote = {
+  return {
     id: `id-${k}`,
     content: `Quote ${k}`
   };
-
-  return custom;
 });
 
-const grid = 8;
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -22,32 +19,34 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const QuoteItem = styled.div`
+const grid = 8;
+/* const QuoteItem = styled.div`
   width: 200px;
   border: 1px solid grey;
   margin-bottom: ${grid}px;
   background-color: lightblue;
   padding: ${grid}px;
-`;
+`; */
 
 function Quote({ quote, index }) {
   return (
     <Draggable draggableId={quote.id} index={index}>
       {provided => (
-        <QuoteItem
+        <div
+          style={{width: '200px', border: '1px solid grey', marginBottom: '8px', backgroundColor: 'lightblue', padding: '8px'}}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
           {quote.content}
-        </QuoteItem>
+        </div>
       )}
     </Draggable>
   );
 }
 
 const QuoteList = React.memo(function QuoteList({ quotes }) {
-  return quotes.map((quote: QuoteType, index: number) => (
+  return quotes.map((quote, index) => (
     <Quote quote={quote} index={index} key={quote.id} />
   ));
 });
